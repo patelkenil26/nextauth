@@ -30,31 +30,40 @@ export default function ProfilePage() {
     setEmail(res.data.data.email)
     setUsername(res.data.data.username)
   };
-  return (
-    <div className="flex items-center justify-center flex-col py-2 min-h-screen">
-      <h1>Profile </h1>
-      <hr />
-      <p>Profile page</p>
-      <h2>
+ return (
+  <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 text-center">
+      <h1 className="text-3xl font-bold text-gray-900 mb-4">👤 Profile</h1>
+      <hr className="mb-6" />
+
+      <p className="text-gray-600 mb-4">Welcome to your profile page</p>
+
+      <h2 className="text-lg font-medium text-indigo-700">
         {data === "nothing" ? (
-          "nothing"
+          "No Profile Data"
         ) : (
-          <Link href={`/profile/${username}`}> {username}</Link>
+          <Link href={`/profile/${username}`} className="hover:underline">
+            {username}
+          </Link>
         )}
       </h2>
-      <hr />
-      <button
-        onClick={logout}
-        className="bg-blue-500 mt-4 hover:bg-blue-700 font-bold text-white py-2 px-4 rounded"
-      >
-        Logout
-      </button>
-      <button
-        onClick={getUserDetails}
-        className="bg-green-500 mt-4 hover:bg-green-700 font-bold text-white py-2 px-4 rounded"
-      >
-        Get User
-      </button>
+
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+        <button
+          onClick={logout}
+          className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition"
+        >
+          Logout
+        </button>
+        <button
+          onClick={getUserDetails}
+          className="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition"
+        >
+          Get User Details
+        </button>
+      </div>
     </div>
-  );
+  </div>
+);
+
 }

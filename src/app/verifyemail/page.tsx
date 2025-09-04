@@ -35,23 +35,29 @@ export default function VerifyEmail() {
         verifyUserEmail()
     }
   },[token])
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1 className="text-4xl">Verify Email</h1>
-        <h2 className="p-2 bg-green-500 text-black">
-            {token ? `${token}` : "No Token"}
-        </h2>
-        {verified && (
-            <div>
-                <h2>Verified</h2>
-                <Link href="/login">Login</Link>
-            </div>
-        )}
-        {error && (
-            <div>
-                <h2>Error</h2>
-            </div>
-        )}
+return (
+  <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 text-center">
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">Verify Email</h1>
+      
+      <h2 className="p-3 bg-green-100 text-green-700 rounded-lg mb-6">
+        {token ? `Token: ${token}` : "No Token Found"}
+      </h2>
+
+      {verified && (
+        <div className="space-y-3">
+          <h2 className="text-green-600 font-semibold">✅ Email Verified Successfully</h2>
+          <Link href="/login" className="text-indigo-600 hover:underline">Go to Login</Link>
+        </div>
+      )}
+
+      {error && (
+        <div className="mt-4 text-red-600 font-semibold">
+          ❌ Error verifying email
+        </div>
+      )}
     </div>
-  );
+  </div>
+);
+
 }
